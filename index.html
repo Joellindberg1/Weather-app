@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Väder Sök</title>
+</head>
+<body>
+    <h1>Väder Sök</h1>
+    <form id="searchForm">
+        <label for="locationInput">Ange adress eller stad:</label>
+        <input type="text" id="locationInput" placeholder="T.ex. Stockholm" required>
+        <button type="submit">Hämta väder</button>
+    </form>
+    <p id="result">Skriv in en stad eller adress för att börja.</p>
+    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="/src/GoogleGeoAPI.ts"></script>
+</body>
+</html>
