@@ -1,6 +1,8 @@
+// Importera typen från SMHITypes.ts
+import { SMHIResponse } from "./SMHITypes";
+
 export async function fetchTemperature(lat: number, lon: number): Promise<string> {
     // Begränsa antal decimaler till 6
-    //Google api ger för många decimaler för SMHI APIt att läsa och då fungerar ej URL:en
     const formattedLat = lat.toFixed(6);
     const formattedLon = lon.toFixed(6);
 
@@ -13,10 +15,12 @@ export async function fetchTemperature(lat: number, lon: number): Promise<string
             throw new Error(`Fel vid hämtning av data: ${response.status}`);
         }
 
-        const data = await response.json();
+        // Typa svaret med SMHIResponse
+        const data: SMHIResponse = await response.json();
         console.log("Svar från SMHI API:", data);
 
-        const temperature = data.timeSeries[0]?.parameters.find((param: any) => param.name === "t")?.values[0];
+        // Använd typen för att hitta temperaturen
+        const temperature = data.timeSeries[0]?.parameters.find((param) => param.name === "t")?.values[0];
         return temperature !== undefined ? `${temperature}°C` : "Temperaturdata saknas.";
     } catch (error) {
         console.error("Ett fel inträffade vid hämtning av temperatur:", error);

@@ -9,8 +9,7 @@ form.addEventListener("submit", async (event) => {
     event.preventDefault();
     const location = input.value.trim();
 
-    console.log("Användaren sökte efter:", location); // Logga användarens sökning
-
+    //console.log("Användaren sökte efter:", location); // Logga användarens sökning
     if (!location) {
         result.textContent = "Ange en giltig plats.";
         return;
@@ -19,7 +18,7 @@ form.addEventListener("submit", async (event) => {
     result.textContent = "Hämtar data...";
 
     const coordinates = await fetchCoordinates(location);
-    console.log("Koordinater från Google API:", coordinates); // Logga koordinater
+    //console.log("Koordinater från Google API:", coordinates); // Logga koordinater
 
     if (coordinates) {
         const temperature = await fetchTemperature(coordinates.latitude, coordinates.longitude);
