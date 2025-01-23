@@ -3,17 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Väder Sök</title>
+    <title>Väderlayout</title>
+    <link rel="stylesheet" href="Style/style.scss"> <!-- Länka till SCSS -->
 </head>
 <body>
-    <h1>Väder Sök</h1>
-    <form id="searchForm">
-        <label for="locationInput">Ange adress eller stad:</label>
-        <input type="text" id="locationInput" placeholder="T.ex. Stockholm" required>
-        <button type="submit">Hämta väder</button>
-    </form>
-    <p id="result">Skriv in en stad eller adress för att börja.</p>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>SWAG</h1>
+        </header>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li>Väder</li>
+                    <ul>
+                        <li>1 dag</li>
+                        <li>10 dagar</li>
+                    </ul>
+                    <li>Nederbörd</li>
+                    <li>Vind</li>
+                    <li>Halka</li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main content -->
+        <main class="main">
+            <form id="searchForm">
+                <label for="locationInput">Sök:</label>
+                <input type="text" id="locationInput" placeholder="Skriv in stad eller adress">
+                <button type="submit">Sök</button>
+            </form>
+            <p id="result">Resultatet visas här...</p>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Remember, this was just a hunch we had..</p>
+        </footer>
+    </div>
     <script type="module" src="/src/main.ts"></script>
     <script type="module" src="/src/GoogleGeoAPI.ts"></script>
 </body>
 </html>
+
