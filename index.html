@@ -33,7 +33,7 @@
         <main class="main">
             <form id="searchForm">
                 <label for="locationInput">Sök:</label>
-                <input type="text" id="locationInput" placeholder="Skriv in stad eller adress">
+                <input type="text" id="locationInput" placeholder="Skriv in stad eller adress" autocomplete="off">
                 <button type="submit">Sök</button>
             </form>
             <p id="result">Resultatet visas här...</p>
@@ -44,6 +44,7 @@
             <p>Remember, this was just a hunch we had..</p>
         </footer>
     </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjskXKp3vMxo8TAZD8j7XjH9p2KrVP5As&libraries=places"></script>
     <script type="module" src="/src/main.ts"></script>
     <script type="module" src="/src/GoogleGeoAPI.ts"></script>
 </body>

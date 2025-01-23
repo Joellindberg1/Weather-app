@@ -29,3 +29,31 @@ form.addEventListener("submit", async (event) => {
         result.textContent = "Kunde inte hitta platsen. Försök igen.";
     }
 });
+
+function initAutocomplete() {
+    const input = document.getElementById("locationInput") as HTMLInputElement;
+
+    // Skapa en ny Google Autocomplete-instans
+    const autocomplete = new google.maps.places.Autocomplete(input, {
+        types: ["geocode"], // Begränsa till adresser och geografiska platser
+        componentRestrictions: { country: "se" }, // Begränsa till Sverige
+    });
+
+    // Lyssna på när användaren väljer en plats
+    autocomplete.addListener("place_changed", () => {
+        const place = autocomplete.getPlace();
+        console.log("Plats vald:", place);
+
+        const selectedAddress = place.formatted_address || place.name || "";
+        console.log("Vald adress:", selectedAddress);
+
+        input.value = selectedAddress; // Uppdatera fältet med den valda adressen
+    });
+}
+
+// Initiera autocomplete när sidan är redo
+document.addEventListener("DOMContentLoaded", () => {
+    initAutocomplete();
+});
+
+
