@@ -11,6 +11,7 @@
         <!-- Header -->
         <header class="header">
             <h1>SWAG</h1>
+            <h2>Sometimes we are guessing</h2>
         </header>
 
         <!-- Sidebar -->
@@ -36,17 +37,22 @@
                 <input type="text" id="locationInput" placeholder="Skriv in stad eller adress" autocomplete="off">
                 <button type="submit">Sök</button>
             </form>
+            <button id="clearSearch">Rensa sökning</button> <!-- 🟢 Lagt till här -->
             <p id="result">Resultatet visas här...</p>
+            <div id="cityContainer" class="cities"></div>
+            <div id="favoriteContainer" class="favorites"></div>
         </main>
+        
 
         <!-- Footer -->
         <footer class="footer">
-            <p>Remember, this was just a hunch we had..</p>
+            <p>Remember, this was just a guess..</p>
         </footer>
     </div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjskXKp3vMxo8TAZD8j7XjH9p2KrVP5As&libraries=places"></script>
     <script type="module" src="/src/main.ts"></script>
     <script type="module" src="/src/GoogleGeoAPI.ts"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjskXKp3vMxo8TAZD8j7XjH9p2KrVP5As&libraries=places"></script>
+
 </body>
 </html>
 
