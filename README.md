@@ -6,13 +6,17 @@
 ✅ Spara och hantera favoritstäder  
 ✅ Få geografiska koordinater genom Google Geocoding API  
 
-🚀 **Byggd med:**  
-- **TypeScript**  
-- **SCSS & CSS Grid**  
-- **Vite för snabb utveckling**  
-- **SMHI & Google API:er för väder- och koordinatdata**  
+## 🛠 Teknologier & API:er  
 
----
+### 🌍 Teknologier
+![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)  
+![SCSS](https://img.shields.io/badge/-SCSS-CC6699?style=for-the-badge&logo=sass&logoColor=white)  
+![Vite](https://img.shields.io/badge/-Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)  
+
+### ☁️ API:er för väder- och koordinatdata 
+![Google](https://img.shields.io/badge/-Google-4285F4?style=for-the-badge&logo=google&logoColor=white)  
+![SMHI](https://img.shields.io/badge/-SMHI-004098?style=for-the-badge&logoColor=white)
+
 
 ## 📌 Hur fungerar applikationen?  
 
@@ -22,7 +26,6 @@
 - **Vädervarningar:** Få SMHI:s varningar för extrema väderförhållanden i Sverige.  
 - **Dynamisk UI-uppdatering:** Favoriter och väderdata sparas och visas automatiskt.  
 
----
 
 ## 📥 Installation & användning  
 
@@ -83,21 +86,21 @@ npm run dev
 ### 📌 SCSS-struktur och koncept vi använder
 |SCSS-koncept       |Var och hur har vi använt det?                                                 |
 |-------------------|-------------------------------------------------------------------------------|
-|Variabler          |Definierar färger, padding och spacing i variables.scss                        |
-|Mixins             |Återanvändbara stilregler för knappar och kort i mixins.scss                   |
-|@use / @forward    |Modularisering av SCSS-filer i style.scss                                      |
+|Variabler          |Definierar färger, padding och spacing i `variables.scss`                        |
+|Mixins             |Återanvändbara stilregler för knappar och kort i `mixins.scss`                   |
+|@use / @forward    |Modularisering av SCSS-filer i `style.scss`                                      |
 |Nesting            |Används för att hålla SCSS-koden strukturerad, t.ex. .sidebar nav ul { ... }   |
-|Grid & Flexbox     |Används i layout.scss för att skapa en responsiv design                        |
+|Grid & Flexbox     |Används i `layout.scss` för att skapa en responsiv design                        |
 |
 ### 📌 TypeScript-struktur
 
 |Fil                |Funktion                                               |
 |-------------------|-------------------------------------------------------------------------------|
-|State.ts          |Hanterar applikationens state och localStorage                      |
-|googlegeoAPI.ts           |Hämtar latitud/longitud baserat på stad/adress                   |
-|SMHIAPI.ts    |Hämtar temperaturdata från SMHI                                      |
-|SMHIWarningsAPI.ts          |Hämtar aktuella vädervarningar från SMHI   |
-|main.ts     |UI-logik, hantering av sökning och rendering av väderdata                       |
+|`State.ts`          |Hanterar applikationens state och localStorage                      |
+|`googlegeoAPI.ts`           |Hämtar latitud/longitud baserat på stad/adress                   |
+|`SMHIAPI.ts`    |Hämtar temperaturdata från SMHI                                      |
+|`MHIWarningsAPI.ts`          |Hämtar aktuella vädervarningar från SMHI   |
+|`main.ts`     |UI-logik, hantering av sökning och rendering av väderdata                       |
 |
 
 

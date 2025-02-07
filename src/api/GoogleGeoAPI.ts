@@ -1,8 +1,8 @@
 //Funktion för att hämta koordinater för en given plats från Google Geocoding API
 export async function fetchCoordinates(location: string): Promise<{ latitude: number, longitude: number } | null> {
     //API-nyckel för att använda Google Geocoding API (måste vara aktiv i Google Cloud Console)
-    const apiKey = "AIzaSyBjskXKp3vMxo8TAZD8j7XjH9p2KrVP5As";
-
+    //const apiKey = "AIzaSyBjskXKp3vMxo8TAZD8j7XjH9p2KrVP5As";
+    const apiKey = import.meta.env.VITE_GOOGLE_API_KEY;
     //Skapar en URL där platsen (`location`) kodas och API-nyckeln läggs till
     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(location)}&key=${apiKey}`;
 

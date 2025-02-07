@@ -194,6 +194,16 @@ async function loadWeatherWarnings() {
     });
 }
 
+const googleApiKey = import.meta.env.VITE_GOOGLE_API_KEY;
+
+if (googleApiKey) {
+    const script = document.getElementById("google-maps-script") as HTMLScriptElement;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${googleApiKey}&libraries=places`;
+} else {
+    console.error("Google API key is missing. Make sure .env file is configured correctly.");
+}
+
+
 // Kör vid sidladdning
 document.addEventListener("DOMContentLoaded", () => {
     loadWeatherWarnings(); // Hämta och visa vädervarningar
