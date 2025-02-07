@@ -1,58 +1,60 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Väderlayout</title>
-    <link rel="stylesheet" href="Style/style.scss"> <!-- Länka till SCSS -->
+    <meta charset="UTF-8"> <!--Anger att teckenkodningen är UTF-8 (standard för specialtecken) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Gör sidan responsiv för mobiler och datorer -->
+    <title>Väderlayout</title> <!--Titel på webbsidan (visas i webbläsarens flik) -->
+    <link rel="stylesheet" href="style/style.css"> <!--Länkar till CSS-filen för styling -->
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
+    <div class="container"> <!--Huvudbehållare för sidans layout -->
+
+        <!-- Header (Sidhuvud) -->
         <header class="header">
             <h1>SWAG</h1>
-            <h2>Sometimes we are guessing</h2>
+            <h2>Sometimes</h2>
+            <h2>we are guessing</h2>
         </header>
 
-        <!-- Sidebar -->
+        <!-- Vädervarningar (Hämtas från SMHI API) -->
+        <section class="warnings-container">
+            <h2>⚠️ Väder Varningar</h2>
+            <div id="weather-warnings">Laddar varningar...</div> <!--Här visas SMHI:s vädervarningar -->
+        </section>
+
+        <!-- Sidebar / Navigationsmeny -->
         <aside class="sidebar">
             <nav>
                 <ul>
-                    <li>Väder</li>
-                    <ul>
-                        <li>1 dag</li>
-                        <li>10 dagar</li>
-                    </ul>
-                    <li>Nederbörd</li>
-                    <li>Vind</li>
-                    <li>Halka</li>
+                    <li><a href="temperature.html">Temperatur</a></li>
+                    <li><a href="precipitation.html">Nederbörd</a></li>
+                    <li><a href="wind.html">Vind</a></li>
                 </ul>
             </nav>
         </aside>
 
-        <!-- Main content -->
+        <!-- Main content (Huvudinnehåll med sökfunktion och väderkort) -->
         <main class="main">
-            <form id="searchForm">
-                <label for="locationInput">Sök:</label>
+            <form id="searchForm"> <!--Formulär för att söka efter väder i en stad -->
+                
                 <input type="text" id="locationInput" placeholder="Skriv in stad eller adress" autocomplete="off">
                 <button type="submit">Sök</button>
             </form>
-            <button id="clearSearch">Rensa sökning</button> <!-- 🟢 Lagt till här -->
-            <p id="result">Resultatet visas här...</p>
-            <div id="cityContainer" class="cities"></div>
-            <div id="favoriteContainer" class="favorites"></div>
+            <button id="clearSearch">Rensa sökning</button> <!--Knapp för att rensa sökning -->
+            <p id="result"></p> <!--Visar sökresultat -->
+            <div id="cityContainer" class="cities"></div> <!--Här renderas väderkort för städer -->
+            <div id="favoriteContainer" class="favorites"></div> <!--Här renderas favoritstäder -->
         </main>
-        
 
-        <!-- Footer -->
+        <!-- Footer (Sidfot) -->
         <footer class="footer">
-            <p>Remember, this was just a guess..</p>
+            <p>Remember, this was just a guess..</p> <!--Visar ett citat i sidfoten -->
         </footer>
     </div>
-    <script type="module" src="/src/main.ts"></script>
-    <script type="module" src="/src/GoogleGeoAPI.ts"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjskXKp3vMxo8TAZD8j7XjH9p2KrVP5As&libraries=places"></script>
 
+    <!--JavaScript-filer -->
+    <script type="module" src="src/views/main.ts"></script> <!--Huvudscript för UI-hantering -->
+    <script type="module" src="src/API/GoogleGeoAPI.ts"></script> <!--Hanterar Google Geocoding API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjskXKp3vMxo8TAZD8j7XjH9p2KrVP5As&libraries=places"></script> <!--Google Maps API för autocomplete -->
 </body>
 </html>
-

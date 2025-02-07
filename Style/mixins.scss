@@ -1,0 +1,23 @@
+@use "variables" as *; //Importerar variabler så vi kan använda dem direkt
+
+//Mixin för knappar
+@mixin button-style($bg-color) {
+  background: $bg-color;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background: darken($bg-color, 10%);
+  }
+}
+
+//Mixin för kort (t.ex. väderkort)
+@mixin card-style {
+  background: $box-background;
+  padding: $padding;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+}

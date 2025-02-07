@@ -1,0 +1,17 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.city {
+    background-color: #f5f5f5; 
+    border-left: 3px solid #ccc; 
+    padding: $padding;
+    border-radius: $border-radius;
+}
+
+//Favoritstäder får en matt gul bakgrund
+.favorite {
+    background-color: #fff3cd;
+    border-left: 5px solid #ffcc00;
+    padding: $padding;
+    border-radius: $border-radius;
+}

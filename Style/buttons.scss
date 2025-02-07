@@ -1,0 +1,12 @@
+@use "mixins" as *; //Importerar mixins så vi kan använda dem direkt
+@use "variables" as *; //Importerar variabler så vi kan använda dem direkt
+
+//Styling för alla knappar
+button {
+  @include button-style($primary-color);
+}
+
+//Styling för "Rensa sökning"-knappen
+#clearSearch {
+  @include button-style(darken($primary-color, 10%));
+}
