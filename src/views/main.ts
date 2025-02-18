@@ -1,6 +1,7 @@
 // Importerar funktioner för API-anrop
 import { fetchCoordinates } from "../api/GoogleGeoAPI"; // Hämtar koordinater från Google Geocoding API
 import { fetchTemperature } from "../api/SMHIAPI"; // Hämtar temperatur från SMHI API
+import { fetchWeatherWarnings } from "../api/SMHIwarningsAPI"; // Hämta vädervarningar från SMHI API
 
 // Importerar state-hantering
 import { 
@@ -174,9 +175,8 @@ document.addEventListener("click", async (event) => {
     }
 });
 
-// Hämta vädervarningar från SMHI API
-import { fetchWeatherWarnings } from "../api/SMHIwarningsAPI";
 
+//Fetch för vädervarningar hos SMHI 
 async function loadWeatherWarnings() {
     const warnings = await fetchWeatherWarnings();
     const warningContainer = document.getElementById("weather-warnings") as HTMLDivElement;

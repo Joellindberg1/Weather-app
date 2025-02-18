@@ -1,3 +1,5 @@
+//=== Denna fil är för utökning av prognos för tempraturer och som mall för vind, nederbörd osv men används inte just nu ===//
+
 import { fetchWeatherForecast } from "../api/SMHIAPI";
 import { getState } from "../state/State";
 import "../../style/style.scss";

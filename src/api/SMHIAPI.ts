@@ -1,9 +1,10 @@
+//=== Här skickar vi in koordinater för att hämta tempratur på koordinaternas plats.  ===//
+
 //Importerar typer för SMHI:s API-data
 import { SMHIResponse, TimeSeries, Parameter } from "../datatypes/SMHITypes";
 
-//Funktion för att hämta aktuell temperatur från SMHI API
 export async function fetchTemperature(lat: number, lon: number): Promise<string> {
-    //Begränsar antal decimaler till 6 för att säkerställa korrekt API-anrop
+    //Sätter antal decimaler till 6 för att säkerställa korrekt API-anrop då det blev fel innan detta men console.logg gav rätt svar men mängder av decimaler. 
     const formattedLat = lat.toFixed(6);
     const formattedLon = lon.toFixed(6);
 
@@ -12,17 +13,16 @@ export async function fetchTemperature(lat: number, lon: number): Promise<string
     console.log("Anropar SMHI API med formaterade koordinater:", url);
 
     try {
-        //Anropar SMHI API
+        //Anropar SMHI API och ger felmeddelande om det inte går. 
         const response = await fetch(url);
         if (!response.ok) {
             throw new Error(`Fel vid hämtning av data: ${response.status}`);
         }
 
-        //Konverterar API-svaret till JSON och typas som `SMHIResponse`
         const data: SMHIResponse = await response.json();
-        console.log("Svar från SMHI API:", data);
+        console.log("Svar från SMHI API:", data); //skriver ut i console.log för felsökning
 
-        //Hittar första tidsserien och letar efter temperaturparametern ("t")
+        //Hittar första tidsserien och letar efter temperaturparametern ("t"). Första tidsserien = nu 
         const temperature = data.timeSeries[0]?.parameters.find((param) => param.name === "t")?.values[0];
 
         //Returnerar temperaturen om den finns, annars visas ett felmeddelande
@@ -33,9 +33,9 @@ export async function fetchTemperature(lat: number, lon: number): Promise<string
     }
 }
 
+//=== Denna funktionen och fetchen används för närvarande inte men påbörjades för att skapa en prognos utöver live datan. ===//
 //Funktion för att hämta en prognos för 1 eller 10 dagar från SMHI API
 export async function fetchWeatherForecast(lat: number, lon: number, days: number): Promise<{ date: string; temperature: string }[]> {
-    //Begränsar decimaler för att säkerställa korrekt API-anrop
     const formattedLat = lat.toFixed(6);
     const formattedLon = lon.toFixed(6);
 
@@ -43,11 +43,9 @@ export async function fetchWeatherForecast(lat: number, lon: number, days: numbe
     const url = `https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/${formattedLon}/lat/${formattedLat}/data.json`;
 
     try {
-        //Anropar API
         const response = await fetch(url);
         if (!response.ok) throw new Error(`Fel vid hämtning av prognos: ${response.status}`);
 
-        //Konverterar svaret till JSON och typas som `SMHIResponse`
         const data: SMHIResponse = await response.json();
 
         //Begränsar mängden data beroende på hur många dagar som efterfrågas

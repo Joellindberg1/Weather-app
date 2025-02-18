@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-    <meta charset="UTF-8"> <!--Anger att teckenkodningen är UTF-8 (standard för specialtecken) -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Gör sidan responsiv för mobiler och datorer -->
-    <title>Väderlayout</title> <!--Titel på webbsidan (visas i webbläsarens flik) -->
-    <link rel="stylesheet" href="style/style.css"> <!--Länkar till CSS-filen för styling -->
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Väderlayout</title> 
+    <link rel="stylesheet" href="style/style.css"> <!--HÄmtar all Scss från style.scss som i sin tur hämtar allt från de andra scss filerna -->
+    <!--JavaScript-filer -->
+    <script type="module" src="src/views/main.ts"></script> <!--Huvudscript för UI-hantering -->
+    <script type="module" src="src/API/GoogleGeoAPI.ts"></script> <!--Hanterar Google Geocoding API -->
+    <script id="google-maps-script" async defer></script> <!--Google Maps API för autocomplete. Nyckel behövs --> 
 </head>
 <body>
     <div class="container"> <!--Huvudbehållare för sidans layout -->
-
-        <!-- Header (Sidhuvud) -->
+        <!-- Header-->
         <header class="header">
             <h1>SWAG</h1>
             <h2>Sometimes</h2>
             <h2>we are guessing</h2>
         </header>
-
         <!-- Vädervarningar (Hämtas från SMHI API) -->
         <section class="warnings-container">
             <h2>⚠️ Väder Varningar</h2>
-            <div id="weather-warnings">Laddar varningar...</div> <!--Här visas SMHI:s vädervarningar -->
+            <div id="weather-warnings">Laddar varningar...</div> <!--Här visas SMHI:s vädervarningar, text skrivs över så fort data eller ingen data finns -->
         </section>
-
         <!-- Sidebar / Navigationsmeny -->
         <aside class="sidebar">
             <nav>
                 <ul>
+                    <!--Påbörjan av utökning för sidan med t ex en ren tempratursida för prognoser osv-->
                     <li><a href="temperature.html">Temperatur</a></li>
                     <li><a href="precipitation.html">Nederbörd</a></li>
                     <li><a href="wind.html">Vind</a></li>
                 </ul>
             </nav>
         </aside>
-
-        <!-- Main content (Huvudinnehåll med sökfunktion och väderkort) -->
+        <!-- Main content (sökfunktion och väderkort) -->
         <main class="main">
-            <form id="searchForm"> <!--Formulär för att söka efter väder i en stad -->
-                
-                <input type="text" id="locationInput" placeholder="Skriv in stad eller adress" autocomplete="off">
+            <form id="searchForm"> <!--Form ruta för att söka efter väder i en stad (inputfältet blir fokus direkt så det är bara för användaren att börja skriva)-->
+                <input type="text" id="locationInput" placeholder="Skriv in stad eller adress" autocomplete="off" autofocus>
                 <button type="submit">Sök</button>
             </form>
             <button id="clearSearch">Rensa sökning</button> <!--Knapp för att rensa sökning -->
@@ -45,16 +45,10 @@
             <div id="cityContainer" class="cities"></div> <!--Här renderas väderkort för städer -->
             <div id="favoriteContainer" class="favorites"></div> <!--Här renderas favoritstäder -->
         </main>
-
-        <!-- Footer (Sidfot) -->
+        <!-- Footer -->
         <footer class="footer">
-            <p>Remember, this was just a guess..</p> <!--Visar ett citat i sidfoten -->
+            <p>Remember, this was just a guess..</p>
         </footer>
     </div>
-
-    <!--JavaScript-filer -->
-    <script type="module" src="src/views/main.ts"></script> <!--Huvudscript för UI-hantering -->
-    <script type="module" src="src/API/GoogleGeoAPI.ts"></script> <!--Hanterar Google Geocoding API -->
-    <script id="google-maps-script" async defer></script> <!--Google Maps API för autocomplete. Nyckel behövs --> 
 </body>
 </html>

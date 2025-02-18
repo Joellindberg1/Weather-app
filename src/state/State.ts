@@ -1,10 +1,16 @@
+//=== Här är state, ändringar för state, favoriserade kort ändras här ===//
+
+//Importera API-funktioner för att hämta temperatur och koordinater
+import { fetchTemperature } from "../api/SMHIAPI";
+import { fetchCoordinates } from "../api/GoogleGeoAPI";
+
 // Definierar typen för en stad
 export interface CityData {
     name: string; 
     temperature?: string; 
     precipitation?: string; 
     wind?: string; 
-    isFavorite?: boolean; //Markerar om staden är favorit
+    isFavorite?: boolean; //Markerar om staden är favorit - Detta bestämmer t ex i vilken array kortet hanteras i och hur det ska se ut. 
     latitude?: number; 
     longitude?: number; 
 }
@@ -22,6 +28,7 @@ const state: {
         { name: "Malmö" },
         { name: "Kiruna" },
     ],
+    //Tomma arrays och sökning. Resultat och ändringar i t ex  isFavorite? lägger in eller tar bort objekt i dessa arrayer
     favorites: [], //Tom lista för favoriter
     searchResults: [], //Tom lista för sökresultat
     isSearching: false, //Sökning är inaktiv från start
@@ -32,7 +39,7 @@ const STORAGE_KEY = "weather_app_state";
 
 //Funktion för att spara state i localStorage
 const saveState = (): void => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); //Konverterar state till JSON och sparar i localStorage
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); 
 };
 
 //Funktion för att ladda state från localStorage vid sidladdning
@@ -53,7 +60,7 @@ const loadState = (): void => {
 };
 
 
-//Ladda state vid start så att favoriter återställs
+//kör loadState för att ladda state vid start
 loadState();
 
 //Funktion för att lägga till en ny stad i state
@@ -83,10 +90,6 @@ export const clearSearch = (): void => {
     //Endast behåll standardstäder och favoriter
     state.cities = state.cities.filter(city => city.isFavorite || ["Stockholm", "Göteborg", "Malmö", "Kiruna"].includes(city.name));
 };
-
-//Importera API-funktioner för att hämta temperatur och koordinater
-import { fetchTemperature } from "../api/SMHIAPI";
-import { fetchCoordinates } from "../api/GoogleGeoAPI";
 
 //Funktion för att hantera favoriter
 export const toggleFavorite = async (cityName: string): Promise<void> => {
@@ -132,7 +135,7 @@ export const toggleFavorite = async (cityName: string): Promise<void> => {
 };
 
 
-//Funktion för att uppdatera en stadsdata (exempelvis temperatur)
+//Funktion för att uppdatera en stads data (exempelvis temperatur)
 export const updateCityData = (cityName: string, newData: Partial<CityData>): void => {
     const city = state.cities.find((c) => c.name === cityName); //Hitta staden i state
     if (city) {

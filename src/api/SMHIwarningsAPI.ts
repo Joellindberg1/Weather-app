@@ -1,3 +1,6 @@
+//=== Här hämtar vi aktuella varningar som finns hos smhi via deras API för varningar  ===//
+
+
 export async function fetchWeatherWarnings(): Promise<any[]> {
     const url = "https://opendata-download-warnings.smhi.se/api/version/1.0/alerts.json";
 
